@@ -1,8 +1,9 @@
 import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "./FavoriteButton";
 
-export default function GalleryPage() {
+export default function GalleryPage({ isLiked, toggleLiked }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
   if (error) {
@@ -20,17 +21,20 @@ export default function GalleryPage() {
           <li key={art.slug}>
             <h2>{art.name}</h2>
             <p>{art.artist}</p>
-
-        <Link href={`/${art.slug}`}>
-          <Image
-            src={art.imageSource}
-            alt={art.name}
-            width={400}
-            height={420}
+            <FavoriteButton
+              toggleLiked={toggleLiked}
+              isLiked={isLiked}
+              slug={art.slug}
             />
-         </Link>
-       </li>
-
+            <Link href={`/${art.slug}`}>
+              <Image
+                src={art.imageSource}
+                alt={art.name}
+                width={400}
+                height={420}
+              />
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-export default function ImageDetails() {
+export default function ImageDetails({ isLiked, toggleLiked }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -16,10 +16,15 @@ export default function ImageDetails() {
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
-  const dataResults = data.find((art) => art.slug === slug);
+  const dataResults = data?.find((art) => art.slug === slug);
+  if (!dataResults) return <h2>Loading...</h2>;
   return (
     <div>
-      <ArtPieceDetails art={dataResults} />
+      <ArtPieceDetails
+        art={dataResults}
+        isLiked={isLiked}
+        toggleLiked={toggleLiked}
+      />
       <Link href="/">
         <button>
           <Image

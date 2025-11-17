@@ -1,10 +1,9 @@
-import Navigation from "@/components/Navigation";
 import GalleryPage from "@/components/GalleryPage";
 
-export default function HomePage() {
+export default function HomePage({ isLiked, toggleLiked }) {
   return (
     <div>
-      <GalleryPage />
+      <GalleryPage isLiked={isLiked} toggleLiked={toggleLiked} />
     </div>
   );
 }
