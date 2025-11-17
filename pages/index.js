@@ -19,7 +19,7 @@ export default function HomePage() {
           <li key={art.slug}>
             <h2>{art.name}</h2>
             <p>{art.artist}</p>
-            <img
+            <Image
               src={art.imageSource}
               alt={art.name}
               width={400}
