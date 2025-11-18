@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
+import Comments from "./Comments";
 
 export default function SpotlightPage({ isLiked, toggleLiked }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
@@ -33,6 +34,7 @@ export default function SpotlightPage({ isLiked, toggleLiked }) {
       <p>
         {spotlightPicture.genre}, {spotlightPicture.year}
       </p>
+      <Comments />
     </div>
   );
 }

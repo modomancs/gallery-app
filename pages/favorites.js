@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import useSWR from "swr";
+import FavoriteButton from "@/components/FavoriteButton";
+import Comments from "@/components/Comments";
 
-export default function FavoritesPage({ isLiked }) {
+export default function FavoritesPage({ isLiked, toggleLiked }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
   if (error) {
-    return <h2>failed to error: {error}</h2>;
+    return <h2>failed to load: {error}</h2>;
   }
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -26,7 +28,11 @@ export default function FavoritesPage({ isLiked }) {
           <li key={art.slug}>
             <h2>{art.name}</h2>
             <p>{art.artist}</p>
-
+        <FavoriteButton
+              toggleLiked={toggleLiked}
+              isLiked={isLiked}
+              slug={art.slug}
+            />
             <Link href={`/${art.slug}`}>
               <Image
                 src={art.imageSource}
@@ -35,6 +41,7 @@ export default function FavoritesPage({ isLiked }) {
                 height={420}
               />
             </Link>
+            <Comments />
           </li>
         ))}
       </ul>
