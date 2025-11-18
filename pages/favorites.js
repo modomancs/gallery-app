@@ -41,7 +41,7 @@ export default function FavoritesPage({ isLiked, toggleLiked }) {
                 height={420}
               />
             </Link>
-            <Comments />
+            <Comments slug={art.slug}/>
           </li>
         ))}
       </ul>
