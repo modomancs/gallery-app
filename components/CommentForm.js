@@ -1,11 +1,15 @@
-export default function CommentForm({ onSubmit }) {
+import cryptoRandomuuid from "crypto-randomuuid";
+
+export default function CommentForm({ onSubmit, slug }) {
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onSubmit(data.comment);
+    const commentSection = {id: crypto.randomUUID(), text: data.comment, date: new Date().toLocaleString(), slug,}
+
+    onSubmit(commentSection);
     event.target.reset();
   }
 

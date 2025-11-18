@@ -1,10 +1,12 @@
+/// our detail dynamic pages
 import ArtPieceDetails from "@/components/ArtPieceDetails";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Comments from "@/components/Comments";
 
-export default function ImageDetails({ isLiked, toggleLiked, onSubmit }) {
+export default function ImageDetails({ isLiked, toggleLiked }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -26,6 +28,7 @@ export default function ImageDetails({ isLiked, toggleLiked, onSubmit }) {
         isLiked={isLiked}
         toggleLiked={toggleLiked}
       />
+      <Comments />
       <Link href="/">
         <button>
           <Image
