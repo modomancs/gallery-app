@@ -1,14 +1,14 @@
 import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import Navigation from "@/components/Navigation";
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
   const response = await fetch(url);
   return await response.json();
 }
 export default function App({ Component, pageProps }) {
-  const [isLiked, setIsLiked] = useState([]);
+  const [isLiked, setIsLiked] = useLocalStorageState("isLiked", {defaultValue: []});
   function toggleLiked(slug) {
     setIsLiked((liked) =>
       liked.includes(slug)
