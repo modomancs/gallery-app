@@ -32,7 +32,7 @@ export default function ImageDetails({ isLiked, toggleLiked }) {
             alt="arrow back"
             width={20}
             height={20}
-          ></Image>
+          />
         </button>
       </Link>
     </div>
