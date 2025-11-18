@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-export default function ImageDetails({ isLiked, toggleLiked }) {
+export default function ImageDetails({ isLiked, toggleLiked, onSubmit }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -18,6 +18,7 @@ export default function ImageDetails({ isLiked, toggleLiked }) {
   }
   const dataResults = data?.find((art) => art.slug === slug);
   if (!dataResults) return <h2>Loading...</h2>;
+
   return (
     <div>
       <ArtPieceDetails
