@@ -5,6 +5,38 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Comments from "/components/comments/Comments";
+import styled from "styled-components";
+const StyledPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
+const StyledCommentsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+`;
+const StyledCard = styled.div`
+  width: 100%;
+  max-width: 900px;
+  border: 5px solid #ccc;
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+`;
+
+const StyledBackButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+`;
 
 export default function ImageDetails({ likedArtworkSlugs, toggleLiked, art }) {
   const router = useRouter();
@@ -22,23 +54,27 @@ export default function ImageDetails({ likedArtworkSlugs, toggleLiked, art }) {
   if (!dataResults) return <h2>Loading...</h2>;
 
   return (
-    <div>
-      <ArtPieceDetails
-        art={dataResults}
-        likedArtworkSlugs={likedArtworkSlugs}
-        toggleLiked={toggleLiked}
-      />
-      <Comments slug={slug} />
+    <StyledPageWrapper>
+      <StyledCard>
+        <ArtPieceDetails
+          art={dataResults}
+          likedArtworkSlugs={likedArtworkSlugs}
+          toggleLiked={toggleLiked}
+        />
+        <StyledCommentsWrapper>
+          <Comments slug={slug} />
+        </StyledCommentsWrapper>
+      </StyledCard>
       <Link href="/">
-        <button>
+        <StyledBackButton>
           <Image
             src="/arrow-left.png"
             alt="arrow back"
             width={20}
             height={20}
           />
-        </button>
+        </StyledBackButton>
       </Link>
-    </div>
+    </StyledPageWrapper>
   );
 }
