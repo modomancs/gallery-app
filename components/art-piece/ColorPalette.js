@@ -1,7 +1,7 @@
 import styled from "styled-components";
 const DivWrap = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 15px;
 `;
 const CircleWithColor = styled.div`
   width: 25px;
@@ -9,13 +9,21 @@ const CircleWithColor = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.color};
 `;
+const ColorText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export default function ColorPalette({ colors }) {
   return (
     <div>
       <h4>Colors used</h4>
       <DivWrap>
         {colors.map((color) => (
-          <CircleWithColor key={color} color={color} />
+          <ColorText key={color}>
+            <CircleWithColor key={color} color={color} />
+            <p>{color}</p>
+          </ColorText>
         ))}
       </DivWrap>
     </div>
