@@ -1,6 +1,6 @@
 /// this is how the website used to be looks like
 import Image from "next/image";
-import FavoriteButton from "/components/art-piece/FavoriteButton";
+import FavoriteButton from "./FavoriteButton";
 
 export default function ArtPieceDetails({
   art,

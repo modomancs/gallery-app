@@ -1,8 +1,8 @@
 import useSWR from "swr"; // react data fetching
 import Image from "next/image";
 import Link from "next/link"; // next js link component
-import FavoriteButton from "/components/art-piece/FavoriteButton";
-import Comments from "/components/comments/Comments";
+import FavoriteButton from "../art-piece/FavoriteButton";
+import Comments from "../comments/Comments";
 
 export default function GalleryPage({
   toggleLiked,
