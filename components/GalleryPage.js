@@ -1,10 +1,10 @@
-import useSWR from "swr";
-import Image from "next/image";
-import Link from "next/link";
+import useSWR from "swr";                           // react data fetching
+import Image from "next/image";                     
+import Link from "next/link";                       // next js link component
 import FavoriteButton from "./FavoriteButton";
 import Comments from "./Comments";
 
-export default function GalleryPage({ toggleLiked, isLiked, slug }) {
+export default function GalleryPage({ toggleLiked, isLiked /* slug */ }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
   if (error) {
@@ -22,20 +22,20 @@ export default function GalleryPage({ toggleLiked, isLiked, slug }) {
           <li key={art.slug}>
             <h2>{art.name}</h2>
             <p>{art.artist}</p>
-         <FavoriteButton
+            <FavoriteButton
               toggleLiked={toggleLiked}
               isLiked={isLiked}
               slug={art.slug}
             />
-        <Link href={`/${art.slug}`}>
-          <Image
-            src={art.imageSource}
-            alt={art.name}
-            width={400}
-            height={420}
-            />
-         </Link>
-           <Comments />
+            <Link href={`/${art.slug}`}>
+              <Image
+                src={art.imageSource}
+                alt={art.name}
+                width={400}
+                height={420}
+              />
+            </Link>
+            <Comments slug={art.slug} />
           </li>
         ))}
       </ul>

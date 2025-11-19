@@ -4,7 +4,7 @@ import CommentList from "./CommentList";
 
 export default function Comments({ slug }) {
   const storageKey = slug ? `comments-${slug}` : "comments";
-  const [comments, setComments] = useLocalStorageState("comments", {
+  const [comments, setComments] = useLocalStorageState(storageKey, {
     defaultValue: [],
   });
   function addComment(addedComment) {
