@@ -14,11 +14,11 @@ export default function FavoritesPage({ likedArtworkSlugs, toggleLiked }) {
     return <h2>Loading...</h2>;
   }
 
-  const favoriteArt = data.filter((art) =>
+  const favoriteArts = data.filter((art) =>
     likedArtworkSlugs.includes(art.slug)
   );
 
-  if (favoriteArt.length === 0) {
+  if (favoriteArts.length === 0) {
     return <h2>No liked pictures</h2>;
   }
 
@@ -26,7 +26,7 @@ export default function FavoritesPage({ likedArtworkSlugs, toggleLiked }) {
     <div>
       <h1>Favorites</h1>
       <ul>
-        {favoriteArt.map((art) => (
+        {favoriteArts.map((art) => (
           <li key={art.slug}>
             <h2>{art.name}</h2>
             <p>{art.artist}</p>
