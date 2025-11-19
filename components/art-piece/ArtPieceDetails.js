@@ -1,6 +1,7 @@
 /// this is how the website used to be looks like
 import Image from "next/image";
 import FavoriteButton from "./FavoriteButton";
+import ColorPalette from "./ColorPalette";
 
 export default function ArtPieceDetails({
   art,
@@ -20,6 +21,7 @@ export default function ArtPieceDetails({
       <p>
         {art.genre}, {art.year}
       </p>
+      <ColorPalette colors={art.colors} />
     </div>
   );
 }
