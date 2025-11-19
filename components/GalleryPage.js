@@ -1,6 +1,6 @@
-import useSWR from "swr";
-import Image from "next/image";
-import Link from "next/link";
+import useSWR from "swr";                           // react data fetching
+import Image from "next/image";                     
+import Link from "next/link";                       // next js link component
 import FavoriteButton from "./FavoriteButton";
 import Comments from "./Comments";
 
