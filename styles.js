@@ -8,6 +8,8 @@ export default createGlobalStyle`
   }
 
   body {
+     background-color: #f5f5f5;
+     padding-top: 20px;
     margin: 0;
     font-family: system-ui;
   }

@@ -29,6 +29,10 @@ const StyledCard = styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  @media (max-width: 600px) {
+    padding: 15px;
+    border-width: 3px;
+  }
 `;
 
 const StyledBackButton = styled.button`

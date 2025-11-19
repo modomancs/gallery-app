@@ -1,32 +1,34 @@
 import Link from "next/link";
 import styled from "styled-components";
-const NavStyle = styled.div`
-  display: inline-flex;
-  gap: 20px;
+const NavBar = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fafafa;
+  padding: 10px 20px;
   margin-bottom: 20px;
-  position: sticky;
-  bottom: 0;
-  background-color: #f9f9f9;
-  padding: 10px 0;
-  border-bottom: 5px solid #ccc;
-  z-index: 1000;
-  width: 13%;
-  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  border-bottom: 2px solid #e6e6e6;
+  z-index: 9999;
+`;
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  a:hover {
+  &:hover {
     text-decoration: underline;
   }
 `;
 export default function Navigation() {
   return (
-    <NavStyle>
-      <Link href="/">Gallery</Link>
-      <Link href="/Spotlight">Spotlight</Link>
-      <Link href="/favorites">Favorites</Link>
-    </NavStyle>
+    <NavBar>
+      <NavLink href="/">Gallery</NavLink>
+      <NavLink href="/Spotlight">Spotlight</NavLink>
+      <NavLink href="/favorites">Favorites</NavLink>
+    </NavBar>
   );
 }
