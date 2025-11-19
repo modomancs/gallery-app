@@ -3,7 +3,7 @@ import Image from "next/image";
 import FavoriteButton from "components/art-piece/FavoriteButton";
 import Comments from "components/comments/Comments";
 
-export default function SpotlightPage({ isLiked, toggleLiked }) {
+export default function SpotlightPage({ likedArtworkSlugs, toggleLiked }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
   if (error) {
@@ -22,7 +22,7 @@ export default function SpotlightPage({ isLiked, toggleLiked }) {
       <p>{spotlightPicture.artist}</p>
       <FavoriteButton
         toggleLiked={toggleLiked}
-        isLiked={isLiked}
+        likedArtworkSlugs={likedArtworkSlugs}
         slug={spotlightPicture.slug}
       />
       <Image

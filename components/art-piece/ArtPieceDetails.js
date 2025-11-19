@@ -2,14 +2,18 @@
 import Image from "next/image";
 import FavoriteButton from "/components/art-piece/FavoriteButton";
 
-export default function ArtPieceDetails({ art, isLiked, toggleLiked }) {
+export default function ArtPieceDetails({
+  art,
+  likedArtworkSlugs,
+  toggleLiked,
+}) {
   return (
     <div>
       <h2>{art.name}</h2>
       <p>{art.artist}</p>
       <FavoriteButton
         slug={art.slug}
-        isLiked={isLiked}
+        likedArtworkSlugs={likedArtworkSlugs}
         toggleLiked={toggleLiked}
       />
       <Image src={art.imageSource} alt={art.name} width={400} height={420} />

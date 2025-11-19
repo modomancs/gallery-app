@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Comments from "/components/comments/Comments";
 
-export default function ImageDetails({ isLiked, toggleLiked, art }) {
+export default function ImageDetails({ likedArtworkSlugs, toggleLiked, art }) {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -25,7 +25,7 @@ export default function ImageDetails({ isLiked, toggleLiked, art }) {
     <div>
       <ArtPieceDetails
         art={dataResults}
-        isLiked={isLiked}
+        likedArtworkSlugs={likedArtworkSlugs}
         toggleLiked={toggleLiked}
       />
       <Comments slug={slug} />

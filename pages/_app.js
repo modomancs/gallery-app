@@ -8,11 +8,14 @@ async function fetcher(url) {
   return await response.json();
 }
 export default function App({ Component, pageProps }) {
-  const [isLiked, setIsLiked] = useLocalStorageState("isLiked", {
-    defaultValue: [],
-  });
+  const [likedArtworkSlugs, setLikedArtworkSlugs] = useLocalStorageState(
+    "likedArtworkSlugs",
+    {
+      defaultValue: [],
+    }
+  );
   function toggleLiked(slug) {
-    setIsLiked((liked) =>
+    setLikedArtworkSlugs((liked) =>
       liked.includes(slug)
         ? liked.filter((image) => image !== slug)
         : [...liked, slug]
@@ -22,7 +25,11 @@ export default function App({ Component, pageProps }) {
   return (
     <SWRConfig value={{ fetcher }}>
       <GlobalStyle />
-      <Component {...pageProps} isLiked={isLiked} toggleLiked={toggleLiked} />
+      <Component
+        {...pageProps}
+        likedArtworkSlugs={likedArtworkSlugs}
+        toggleLiked={toggleLiked}
+      />
       <Navigation />
     </SWRConfig>
   );

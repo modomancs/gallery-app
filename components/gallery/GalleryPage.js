@@ -4,7 +4,10 @@ import Link from "next/link"; // next js link component
 import FavoriteButton from "/components/art-piece/FavoriteButton";
 import Comments from "/components/comments/Comments";
 
-export default function GalleryPage({ toggleLiked, isLiked /* slug */ }) {
+export default function GalleryPage({
+  toggleLiked,
+  likedArtworkSlugs /* slug */,
+}) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
   if (error) {
@@ -24,7 +27,7 @@ export default function GalleryPage({ toggleLiked, isLiked /* slug */ }) {
             <p>{art.artist}</p>
             <FavoriteButton
               toggleLiked={toggleLiked}
-              isLiked={isLiked}
+              likedArtworkSlugs={likedArtworkSlugs}
               slug={art.slug}
             />
             <Link href={`/${art.slug}`}>
