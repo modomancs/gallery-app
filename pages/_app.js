@@ -1,6 +1,6 @@
 import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/layout/Navigation";
 import useLocalStorageState from "use-local-storage-state";
 
 async function fetcher(url) {
@@ -8,7 +8,9 @@ async function fetcher(url) {
   return await response.json();
 }
 export default function App({ Component, pageProps }) {
-  const [isLiked, setIsLiked] = useLocalStorageState("isLiked", {defaultValue: []});
+  const [isLiked, setIsLiked] = useLocalStorageState("isLiked", {
+    defaultValue: [],
+  });
   function toggleLiked(slug) {
     setIsLiked((liked) =>
       liked.includes(slug)

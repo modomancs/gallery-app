@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import Image from "next/image";
-import FavoriteButton from "./FavoriteButton";
-import Comments from "./Comments";
+import FavoriteButton from "components/art-piece/FavoriteButton";
+import Comments from "components/comments/Comments";
 
 export default function SpotlightPage({ isLiked, toggleLiked }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";

@@ -1,8 +1,8 @@
-import useSWR from "swr";                           // react data fetching
-import Image from "next/image";                     
-import Link from "next/link";                       // next js link component
-import FavoriteButton from "./FavoriteButton";
-import Comments from "./Comments";
+import useSWR from "swr"; // react data fetching
+import Image from "next/image";
+import Link from "next/link"; // next js link component
+import FavoriteButton from "/components/art-piece/FavoriteButton";
+import Comments from "/components/comments/Comments";
 
 export default function GalleryPage({ toggleLiked, isLiked /* slug */ }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";

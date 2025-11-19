@@ -1,6 +1,6 @@
 /// this is how the website used to be looks like
 import Image from "next/image";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "/components/art-piece/FavoriteButton";
 
 export default function ArtPieceDetails({ art, isLiked, toggleLiked }) {
   return (

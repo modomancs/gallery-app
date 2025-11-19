@@ -1,6 +1,6 @@
 import useLocalStorageState from "use-local-storage-state";
-import CommentForm from "./CommentForm";
-import CommentList from "./CommentList";
+import CommentForm from "/components/comments/CommentForm";
+import CommentList from "/components/comments/CommentList";
 
 export default function Comments({ slug }) {
   const storageKey = slug ? `comments-${slug}` : "comments";

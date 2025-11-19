@@ -1,4 +1,4 @@
-import GalleryPage from "@/components/GalleryPage";
+import GalleryPage from "/components/gallery/GalleryPage.js";
 
 export default function HomePage({ isLiked, toggleLiked }) {
   return (
