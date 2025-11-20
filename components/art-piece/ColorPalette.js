@@ -14,14 +14,15 @@ const ColorText = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
 export default function ColorPalette({ colors }) {
   return (
     <div>
-      <h4>Colors used</h4>
+      <h4>Colors used:</h4>
       <DivWrap>
         {colors.map((color) => (
           <ColorText key={color}>
-            <CircleWithColor key={color} color={color} />
+            <CircleWithColor color={color} />
             <p>{color}</p>
           </ColorText>
         ))}

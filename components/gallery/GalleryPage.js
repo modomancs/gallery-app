@@ -1,8 +1,7 @@
-import useSWR from "swr"; // react data fetching
+import useSWR from "swr";
 import Image from "next/image";
-import Link from "next/link"; // next js link component
+import Link from "next/link";
 import FavoriteButton from "../art-piece/FavoriteButton";
-import Comments from "../comments/Comments";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
@@ -67,7 +66,9 @@ const StyledH1 = styled.h1`
 
 const ImageWrap = styled.div`
   width: 100%;
+  height: 250px;
   position: relative;
+  overflow: hidden;
 `;
 
 const StyledImage = styled(Image)`
@@ -81,22 +82,16 @@ const StyledImage = styled(Image)`
   }
 `;
 
-export default function GalleryPage({
-  toggleLiked,
-  likedArtworkSlugs /* slug */,
-}) {
+export default function GalleryPage({ toggleLiked, likedArtworkSlugs }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
-  if (error) {
-    return <h2>failed to load: {error}</h2>;
-  }
-  if (isLoading) {
-    return <h2>Loading...</h2>;
-  }
+
+  if (error) return <h2>failed to load: {error}</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
 
   return (
     <StyledDiv>
-      <StyledH1>Gallery App</StyledH1>
+      <StyledH1>Art Gallery App</StyledH1>
 
       <StyledUl>
         {data.map((art) => (
@@ -108,6 +103,7 @@ export default function GalleryPage({
                 slug={art.slug}
               />
             </FavWrapper>
+
             <h2>{art.name}</h2>
             <p>{art.artist}</p>
 
@@ -121,8 +117,6 @@ export default function GalleryPage({
                 />
               </Link>
             </ImageWrap>
-
-            <Comments slug={art.slug} />
           </StyledLi>
         ))}
       </StyledUl>

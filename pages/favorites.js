@@ -54,6 +54,7 @@ const StyledLi = styled.li`
 
 const ImageWrap = styled.div`
   width: 100%;
+  height: 250px;
   position: relative;
   overflow: hidden;
 `;
@@ -89,7 +90,7 @@ export default function FavoritesPage({ likedArtworkSlugs, toggleLiked }) {
 
   if (error) return <h2>failed to load: {error}</h2>;
   if (isLoading) return <h2>Loading...</h2>;
-
+  //we filter images that are liked and are stored in uselocalstorage. just take images that are liked.
   const favoriteArts = data.filter((art) =>
     likedArtworkSlugs.includes(art.slug)
   );
@@ -130,8 +131,6 @@ export default function FavoritesPage({ likedArtworkSlugs, toggleLiked }) {
                 />
               </Link>
             </ImageWrap>
-
-            <Comments slug={art.slug} />
           </StyledLi>
         ))}
       </StyledUl>

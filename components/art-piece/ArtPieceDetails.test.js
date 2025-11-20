@@ -23,6 +23,7 @@ test("renders art piece details", () => {
     imageSource: "/test.jpg",
     genre: "Abstract",
     year: 2020,
+    colors: ["red", "blue"],
   };
 
   render(

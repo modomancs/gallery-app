@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import Image from "next/image";
+import Link from "next/link";
 import FavoriteButton from "components/art-piece/FavoriteButton";
 import Comments from "components/comments/Comments";
 import styled from "styled-components";
@@ -39,6 +40,7 @@ const FavWrapper = styled.div`
 
 const ImageWrap = styled.div`
   width: 100%;
+  height: 500px;
   position: relative;
   overflow: hidden;
 `;
@@ -68,15 +70,13 @@ const StyledH1 = styled.h1`
   padding-bottom: 10px;
   margin-bottom: 30px;
 `;
+
 export default function SpotlightPage({ likedArtworkSlugs, toggleLiked }) {
   const apiUrl = "https://example-apis.vercel.app/api/art";
   const { data, error, isLoading } = useSWR(apiUrl);
-  if (error) {
-    return <h2>failed to load: {error}</h2>;
-  }
-  if (isLoading) {
-    return <h2>Loading...</h2>;
-  }
+
+  if (error) return <h2>failed to load: {error}</h2>;
+  if (isLoading) return <h2>Loading...</h2>;
 
   const randomIndex = Math.floor(Math.random() * data.length);
   const spotlightPicture = data[randomIndex];
@@ -98,19 +98,19 @@ export default function SpotlightPage({ likedArtworkSlugs, toggleLiked }) {
         <p>{spotlightPicture.artist}</p>
 
         <ImageWrap>
-          <StyledImage
-            src={spotlightPicture.imageSource}
-            alt={spotlightPicture.name}
-            width={600}
-            height={620}
-          />
+          <Link href={`/${spotlightPicture.slug}`}>
+            <StyledImage
+              src={spotlightPicture.imageSource}
+              alt={spotlightPicture.name}
+              width={400}
+              height={420}
+            />
+          </Link>
         </ImageWrap>
 
         <p>
           {spotlightPicture.genre}, {spotlightPicture.year}
         </p>
-
-        <Comments slug={spotlightPicture.slug} />
       </StyledCard>
     </StyledPage>
   );

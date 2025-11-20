@@ -4,11 +4,21 @@ export default function CommentForm({ onSubmit, slug }) {
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+    const date = new Date();
+
+    const formattedDate = date
+      .toLocaleString("en-US", {
+        weekday: "long",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+      .replace(",", " •");
 
     const commentSection = {
       id: crypto.randomUUID(),
       text: data.comment,
-      date: new Date().toLocaleString(),
+      date: formattedDate,
       slug,
     };
 

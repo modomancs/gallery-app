@@ -43,7 +43,7 @@ test("renders gallery page with art items", () => {
   });
 
   render(<GalleryPage likedArtworkSlugs={[]} toggleLiked={() => {}} />);
-  expect(screen.getByText("Gallery App")).toBeInTheDocument();
+  expect(screen.getByText("Art Gallery App")).toBeInTheDocument();
   expect(screen.getByText("Test Art")).toBeInTheDocument();
   expect(screen.getByText("Tester")).toBeInTheDocument();
   expect(screen.getByText("Favorite")).toBeInTheDocument();

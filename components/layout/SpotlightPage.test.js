@@ -30,6 +30,6 @@ test("renders spotlight page", () => {
 
   render(<SpotlightPage likedArtworkSlugs={[]} toggleLiked={() => {}} />);
 
-  const heading = screen.getByText("Spotlight Page");
+  const heading = screen.getByText("Spotlight");
   expect(heading).toBeInTheDocument();
 });
